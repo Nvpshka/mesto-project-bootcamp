@@ -25,3 +25,7 @@
 **Планы**
 
 Доработать все кнопки на JS, добавить перевод на английский язык и дизлайки.
+
+**GitHub Pages**
+
+[Ссылка на GitHubPages] (https://nvpshka.github.io/mesto-project-bootcamp/)
