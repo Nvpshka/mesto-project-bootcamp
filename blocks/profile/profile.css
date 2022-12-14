@@ -1,0 +1,27 @@
+.profile{
+	display: flex;
+	flex-direction: row;
+	flex-wrap:wrap;
+	margin-top: 40px;
+	min-height: 120px;
+	width: 880px;
+	box-sizing: border-box;
+	justify-content: space-between;
+	margin-right: auto;
+	margin-left: auto;
+}
+@media (max-width: 1041px) {
+	.profile{
+		width:100%;
+		display:grid;
+		grid-template-rows: repeat(3, max-content);
+		justify-content: center;
+		align-items: center;
+	}
+}
+@media (max-width: 360px) {
+	.profile{
+		 margin-top: 42px;
+		 grid-template-columns: repeat(1, 282px);
+	}
+}

@@ -1,0 +1,23 @@
+.edit-button__image{
+	width: 24px;
+	height: 24px;
+	margin:0;
+	background: url(../../../images/pen.png);
+	background-size: 10px 10px;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin:37px 0 0 0;
+	align-self: end;
+}
+.edit-button__image:hover{
+	cursor:pointer;
+	opacity: 60%;
+}
+@media (max-width: 360px) {
+	.edit-button__image{
+		width:18px;
+		height: 18px;
+		background-size: 7.5px 7.5px;
+		margin-top: 30px;
+	}
+}

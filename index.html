@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Проект Mesto</title>
+</head>
+<body class="body">
+	<div class="page">
+		<header class="header">
+			<img src="./images/logo.png" alt="Место Россия" class="header__logo">
+			<img src="./images/line.png" alt="Линия" class="header__line">
+		</header>
+		<main class="content">
+			<section class="profile">
+				<div class="profile__avatar"></div>
+				<div class="profile-info">
+					<h1 class="profile-info__title">Жак-Ив Кусто</h1>
+					<div class="edit-button">
+						<img src="./images/kvadrat.png" class="edit-button__image">
+					</div>
+					<p class="profile-info__subtitle">Исследователь океана</p>
+				</div>
+				<div class="add-button">
+					<img src="./images/pryamougolnik.png" class="add-button__image">
+				</div>
+			</section>
+			<section class="elements">
+				<figure class="elements__card">
+					<img src='./images/karachaevsk.jpg' class="elements__image">
+					<div class="elements__caption">
+						<figcaption class="elements__name">Карачаевск</figcaption>
+						<img src="./images/like.svg" class="elements__like">
+					</div>
+				</figure>
+				<figure class="elements__card">
+					<img src='./images/elbrus.png' class="elements__image">
+					<div class="elements__caption">
+						<figcaption class="elements__name">Гора Эльбрус</figcaption>
+						<img src="./images/like.svg" class="elements__like">
+					</div>
+				</figure>
+				<figure class="elements__card">
+					<img src='./images/dombai.png' class="elements__image">
+					<div class="elements__caption">
+						<figcaption class="elements__name">Домбай</figcaption>
+						<img src="./images/like.svg" class="elements__like">
+					</div>
+				</figure>
+				<figure class="elements__card">
+					<img src='./images/elbrus.png' class="elements__image">
+					<div class="elements__caption">
+						<figcaption class="elements__name">Гора Эльбрус</figcaption>
+						<img src="./images/like.svg" class="elements__like">
+					</div>
+				</figure>
+				<figure class="elements__card">
+					<img src='./images/dombai.png' class="elements__image">
+					<div class="elements__caption">
+						<figcaption class="elements__name">Домбай</figcaption>
+						<img src="./images/like.svg" class="elements__like">
+					</div>
+				</figure>
+				<figure class="elements__card">
+					<img src='./images/karachaevsk.jpg' class="elements__image">
+					<div class="elements__caption">
+						<figcaption class="elements__name">Карачаево</figcaption>
+						<img src="./images/like.svg" class="elements__like">
+					</div>
+				</figure>
+			</section>
+		</main>
+		<footer class="footer">
+			<p class="footer__copyright"> &#169;2020 Mesto Russia</p>
+		</footer>
+		<div class="popup popup_opened">
+			<div class="popup__container">
+				<div class="cross-button"></div>
+				<h2 class="popup__title">Редактировать профиль</h2>
+				<p class="popup__name-form">Жак-Ив Кусто</p>
+				<div class="popup__underline"></div>
+				<p class="popup__role-form">Исследователь океана</p>
+				<div class="popup__underline"></div>
+				<div class="submit-button">
+					<p class="submit-button__text">Сохранить</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>

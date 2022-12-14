@@ -1,0 +1,16 @@
+.submit-button__text{
+	max-height: 18px;
+	color:white;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 22px;
+	text-align: center;
+	margin:0;
+}
+@media (max-width: 550px) {
+	.submit-button__text{
+		font-size: 14px;
+		line-height: 17px;
+	}
+}

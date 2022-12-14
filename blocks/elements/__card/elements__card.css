@@ -1,0 +1,9 @@
+.elements__card{
+	width:max-content;
+	background:url(../../../images/white-pryamougolnik.png);
+	background-size: 282px 361px;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin:0;
+	height: 361px;
+}

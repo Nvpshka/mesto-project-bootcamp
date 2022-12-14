@@ -1,0 +1,18 @@
+.header{
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 45px auto 0 auto;
+	max-width: 880px;
+	box-sizing: border-box;
+}
+@media (max-width: 1024px) {
+	.header{
+		max-width: 100%
+	}
+}
+@media (max-width: 360px) {
+	.header{
+		margin-top:28px;
+	}
+}

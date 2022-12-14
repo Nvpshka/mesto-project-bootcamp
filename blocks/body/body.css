@@ -1,0 +1,28 @@
+.body{
+	max-width: 1280px;
+	box-sizing: border-box;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #000000;
+}
+
+.add-button__image{
+	width:150px;
+	height: 50px;
+	background:url(../../images/plus.png);
+	background-size: 22px 22px;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin:35px 0 0 0;
+	align-self: center;
+	justify-content: center;
+}
+.elements__name:last-child{
+	border:1px solid red;
+	text-overflow: ellipsis;
+  	white-space: nowrap;
+ 	overflow: hidden;
+}
+
+
+
