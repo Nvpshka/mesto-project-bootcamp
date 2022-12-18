@@ -1,20 +1,21 @@
-.add-button__image{
+.profile__add-button{
 	width:150px;
 	height: 50px;
 	background:url(../../../images/plus.png);
 	background-size: 22px 22px;
 	background-repeat: no-repeat;
 	background-position: center;
-	margin:35px 0 0 0;
+	margin:0;
 	align-self: center;
 	justify-content: center;
+	border:2px solid white;
 }
-.add-button__image:hover{
+.profile__add-button:hover{
 	cursor:pointer;
 	opacity: 60%;
 }
 @media (max-width: 1041px) {
-	.add-button__image{
+	.profile__add-button{
 		width: 100%;
 	}
 }

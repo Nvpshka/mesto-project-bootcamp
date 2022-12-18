@@ -8,3 +8,9 @@
   	white-space: nowrap;
   	overflow: hidden;
 }
+.elements__name:last-child{
+	border:1px solid red;
+	text-overflow: ellipsis;
+  	white-space: nowrap;
+ 	overflow: hidden;
+}

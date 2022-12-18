@@ -12,8 +12,6 @@
 }
 @media (max-width: 360px) {
 	.profile-info__subtitle{
-		font-style: normal;
-		font-weight: 400;
 		font-size: 14px;
 		line-height: 16.94px;
 		text-align: center;

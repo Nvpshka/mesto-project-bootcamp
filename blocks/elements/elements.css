@@ -2,7 +2,7 @@
 	display:grid;
 	justify-content: center;
 	grid-template-columns: repeat(3, 282px);
-	grid-template-rows: repeat(2, 361px);
+	grid-template-rows: repeat(auto, 361px);
 	gap:20px 17px;
 	max-width: 880px;
 	margin: 51px auto 0 auto;
@@ -10,13 +10,13 @@
 @media (max-width: 1041px) {
 	.elements {
 		grid-template-columns: repeat(2, 282px);
-		grid-template-rows: repeat(3, 361px);
+		grid-template-rows: repeat(auto, 361px);
 	}
 }
 @media (max-width: 600px) {
 	.elements {
 		grid-template-columns: repeat(1, 282px);
-		grid-template-rows: repeat(6, 361px);
+		grid-template-rows: repeat(auto, 361px);
 	}
 }
 @media (max-width: 360px) {
