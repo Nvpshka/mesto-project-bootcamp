@@ -7,7 +7,7 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	align-self: center;
-	/*border:1px solid white;*/
+	border:1px solid white;
 }
 .profile-info__edit-button:hover{
 	cursor:pointer;
