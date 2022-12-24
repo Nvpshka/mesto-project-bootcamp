@@ -72,6 +72,7 @@ const createCard = (data) => {
   card.querySelector(".elements__name").textContent = data.name;
   card.querySelector(".trash-button").addEventListener("click", handleDeleteCard);
   card.querySelector(".elements__like").addEventListener("click",handleLikeCard);
+  card.querySelector(".elements__image").addEventListener("click", handleOpenImage);
 
   return card;
 };
@@ -81,6 +82,17 @@ const handleDeleteCard = (event) => {
 const handleLikeCard = (event) => {
 	event.target.closest('.elements__like').classList.toggle('elements__like_active')
 }
+const popupFullImage = document.querySelector(".popup__full-img");
+const popupImage = popupFullImage.querySelector(".popup__image");
+const popupCaption = popupFullImage.querySelector(".popup__caption");
+
+function handleOpenImage (event){
+	popupImage.src = event.target.closest('.elements__image').src;
+	popupCaption.textContent = event.target.closest('.elements__caption').value;
+
+	popupFullImage.classList.add(".popup_opened_dark");
+}
+
 const renderCard = (data) => {
   elements.prepend(createCard(data));
 };
@@ -89,14 +101,16 @@ initialCards.forEach((data) => {
 	renderCard(data);
 })
 const nameCardInput = popupNewCard.querySelector('.popup__input_name-card');
-const urlInput = popupNewCard.querySelector('.popup__input_url');
+const urlInput = popupNewCard.querySelector(".popup__input_url");
 
 addCardButton.addEventListener("click", (evt) => {
 	evt.preventDefault();
 
-    renderCard((nameCardInput.value), (urlInput.value));
+	const newCard = {name: nameCardInput.value, link: urlInput.value}
+    renderCard(newCard);
     nameCardInput.value = '';
     urlInput.value = '';
 
   popupNewCard.classList.remove('popup_opened') 
 });
+
