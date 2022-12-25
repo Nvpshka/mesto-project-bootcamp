@@ -1,9 +1,6 @@
 .popup_opened_dark{
-	display: flex;
-	width:100%;
-    min-height:100%;
-    background-color: rgba(0,0,0,0.9);
-    position:fixed;
-    top:0;
-    left:0;
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 1s, opacity 1s linear;
+  background-color: rgba(0, 0, 0, 0.9);
 }

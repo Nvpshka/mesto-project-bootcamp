@@ -8,13 +8,22 @@ const jobInput = popup.querySelector('.popup__input_job');
 const profileName = document.querySelector('.profile-info__title');
 const profileJob = document.querySelector('.profile-info__subtitle');
 const saveButton = popupEditProfile.querySelector('#button_save_edits');
+const template = document.querySelector('.template').content.querySelector(".elements__card");
+const elements = document.querySelector(".elements");
+const addCardButton = popupNewCard.querySelector(".popup__button");
+const popupFullImage = document.querySelector(".popup__full-img");
+const popupImage = popupFullImage.querySelector(".popup__image");
+const popupCaption = popupFullImage.querySelector(".popup__caption");
+const nameCardInput = popupNewCard.querySelector('.popup__input_name-card');
+const urlInput = popupNewCard.querySelector(".popup__input_url");
+
 
 //открыть попап редактирование профиля
 editButton.addEventListener('click', 
 	function (evt) {
 		popupEditProfile.classList.add('popup_opened')
 	});
-//Открыть попап доьавления карточки
+//Открыть попап добавления карточки
 addButton.addEventListener('click',
 	function(evt) {
 		popupNewCard.classList.add('popup_opened')
@@ -34,38 +43,10 @@ function editProfile(evt) {
 	profileJob.textContent = jobInput.value;
 	popupEditProfile.classList.remove('popup_opened') 
  }
+//работа кнопки сохранить у попапа редактирования профиля
 saveButton.addEventListener('click', editProfile);
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-const template = document.querySelector('.template').content.querySelector(".elements__card");
-const elements = document.querySelector(".elements");
-const addCardButton = popupNewCard.querySelector(".popup__button");
-
+//функция создания карточки на основании готового массива
 const createCard = (data) => {
   const card = template.cloneNode(true);
   card.querySelector(".elements__image").src = data.link;
@@ -76,33 +57,38 @@ const createCard = (data) => {
 
   return card;
 };
+
+//функция удаления карточки
 const handleDeleteCard = (event) => {
   event.target.closest(".elements__card").remove();
 };
+//функция лайка 
 const handleLikeCard = (event) => {
 	event.target.closest('.elements__like').classList.toggle('elements__like_active')
 }
-const popupFullImage = document.querySelector(".popup__full-img");
-const popupImage = popupFullImage.querySelector(".popup__image");
-const popupCaption = popupFullImage.querySelector(".popup__caption");
-
+//функцтя открытия картинки
 function handleOpenImage (event){
-	popupImage.src = event.target.closest('.elements__image').src;
-	popupCaption.textContent = event.target.closest('.elements__caption').value;
+	const card = event.target.closest('.elements__card');
+	popupImage.src = event.target.src;
+	popupCaption.textContent = card.querySelector('.elements__name').textContent;
 
-	popupFullImage.classList.add(".popup_opened_dark");
+	popupFullImage.classList.add("popup_opened_dark");
 }
-
+//закрытие картинки
+popupFullImage.querySelector(".cross-button").addEventListener("click", function(){
+	popupFullImage.classList.remove('popup_opened_dark')
+	
+});
+//создание карточек
 const renderCard = (data) => {
   elements.prepend(createCard(data));
 };
-
+//инициализация данных массива
 initialCards.forEach((data) => {
 	renderCard(data);
 })
-const nameCardInput = popupNewCard.querySelector('.popup__input_name-card');
-const urlInput = popupNewCard.querySelector(".popup__input_url");
 
+//добавление пользовательских карточек
 addCardButton.addEventListener("click", (evt) => {
 	evt.preventDefault();
 
