@@ -3,17 +3,16 @@
 	<head>
   		<meta charset="UTF-8">
   		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  		<link rel="stylesheet" href="./pages/index.css">
   		<title>Проект Mesto</title>
 	</head>
 	<body class="body">
 		<div class="page">
 			<header class="header">
-				<img src="./images/logo.svg" alt="Место Россия" class="header__logo">
+				<img src="<%=require('./images/logo.svg')%>" alt="Место Россия" class="header__logo">
 			</header>
 			<main class="content">
 				<section class="profile">
-					<img src="./images/avatar.jpg" class="profile__avatar" alt="Фото профиля">
+					<img src="<%=require('./images/avatar.jpg')%>" class="profile__avatar" alt="Фото профиля">
 					<div class="profile-info">
 						<h1 class="profile-info__title">Жак-Ив Кусто</h1>
 						<button type="submit" class="profile-info__edit-button"> </button>
@@ -41,11 +40,13 @@
 				<div class="popup__container">
 					<button type="reset" class="cross-button"></button>
 					<h2 class="popup__title">Редактировать профиль</h2>
-					<form class="popup__form">
-						<input type="text" class="popup__input popup__input_name" placeholder="Жак-Ив Кусто">
-						<input type="text" class="popup__input popup__input_job" placeholder="Исследователь океана">
+					<form class="popup__form" novalidate>
+						<input type="text" class="popup__input popup__input_name" placeholder="Жак-Ив Кусто" required minlength="2" maxlength="40" id='popup__input_name'>
+						<span class="popup__input-error name-input-error" id="popup__input_name-error"></span>
+						<input type="text" class="popup__input popup__input_job" placeholder="Исследователь океана" required minlength="2" maxlength="200" id='popup__input_job'>
+						<span class="popup__input-error job-input-error" id="popup__input_job-error"></span>
+						<button type="submit" class="popup__button button_inactive" id="button_save_edits">Сохранить</button>
 					</form>
-					<button type="submit" class="popup__button" id="button_save_edits">Сохранить</button>
 				</div>
 			</div>
 			<div class="popup popup__add-new-card">
@@ -53,11 +54,13 @@
 					<button type="reset" class="cross-button"></button>
 					<h2 class="popup__title">Новое место
 					</h2>
-					<form class="popup__form">
-						<input type="text" class="popup__input popup__input_name-card" placeholder="Название">
-						<input type="text" class="popup__input popup__input_url" placeholder="Ссылка на картинку">
+					<form class="popup__form" novalidate>
+						<input type="text" class="popup__input popup__input_name-card" placeholder="Название" required minlength="2" maxlength="30" id="popup__input_name-card">
+						<span class="popup__input-error" id="popup__input_name-card-error"></span>
+						<input type="url" class="popup__input popup__input_url" placeholder="Ссылка на картинку" required id="popup__input_url">
+						<span class="popup__input-error url__error" id="popup__input_url-error"></span>
+						<button type="submit" class="popup__button">Сохранить</button>
 					</form>
-					<button type="submit" class="popup__button">Сохранить</button>
 				</div>
 			</div>
 			<div class="popup popup__full-img">
@@ -68,7 +71,5 @@
 				</div>
 			</div>
 		</div>
-		<script src="./scripts/data.js"></script>
-		<script src="./scripts/script.js"></script>
 	</body>
 </html>

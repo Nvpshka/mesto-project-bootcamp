@@ -2,7 +2,7 @@
 	width:358px;
 	height: 50px;
 	background-color:black;
-	margin:48px auto 37px auto;
+	margin:18px 36px 37px 36px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -16,6 +16,6 @@
 	.popup__button{
 		width:238px;
 		height: 46px;
-		margin:45px auto 25px auto;
+		margin:45px 0 25px 0;
 	}
 }
