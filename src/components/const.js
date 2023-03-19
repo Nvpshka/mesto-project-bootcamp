@@ -1,5 +1,5 @@
 export const popupAll=document.querySelectorAll('.popup');
-export const popup = document.querySelector('.popup');
+// export const popup = document.querySelector('.popup');
 export const popupEditProfile = document.querySelector('.popup__edit-profile');
 export const popupNewCard = document.querySelector('.popup__add-new-card');
 export const editButton = document.querySelector('.profile-info__edit-button');
