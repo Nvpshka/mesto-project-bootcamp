@@ -1,82 +1,96 @@
-import { profileName, profileJob, urlInput, nameCardInput, template, elements, nameInput, 
-	jobInput, popupEditProfile, popupNewCard } from './const.js';
-import { closePopup, handleOpenImage } from './modal.js';
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+import { profileName, profileJob, elements, editButton, template, nameInput, jobInput } from './const.js';
+import { closePopup, handleOpenImage, renderLoading, openPopupDeleteCard } from './modal.js';
+import { addLikeOnServer, deleteLikeFromServer, updateProfile } from './api.js';
 
 
-//функция создания карточки на основании готового массива
-const createCard = (initialCards) => {
+
+const addCard = (data) => {
   const card = template.cloneNode(true);
-  card.querySelector(".elements__image").src = initialCards.link;
-  card.querySelector(".elements__name").textContent = initialCards.name;
-  card.querySelector(".trash-button").addEventListener("click", handleDeleteCard);
-  card.querySelector(".elements__like").addEventListener("click",handleLikeCard);
-  card.querySelector(".elements__image").addEventListener("click", handleOpenImage);
+  card.id = data._id;
+  const image = card.querySelector('.elements__image');
+  image.src = data.link;
+  image.alt = data.name;
+  image.addEventListener('click', handleOpenImage);
+  card.querySelector(".elements__name").textContent = data.name;
+  const trashButton = card.querySelector(".trash-button");
+  trashButton.addEventListener("click", openPopupDeleteCard);
+  disableDeleteButton(data, trashButton);
+  card.querySelector('.elements__like-numbers').textContent = data.likes.length;
+   const likeButton = card.querySelector(".elements__like");
 
+
+  likeButton.addEventListener('click', handleLikeCard);
+ 
+  data.likes.forEach((like) => checkLikeButton(like._id, likeButton));
   return card;
 };
 
-//функция удаления карточки
-const handleDeleteCard = (event) => {
-  event.target.closest(".elements__card").remove();
+// const handleDeleteCard = (event) => {
+//   event.target.closest(".elements__card").remove();
+// };
+
+
+const handleLikeCard = (evt) => {
+  const card = evt.target.closest('.elements__card');
+  const likeNumber = card.querySelector('.elements__like-numbers');
+  if (evt.target.classList.contains('elements__like_active')) {
+    deleteLikeFromServer(card.id)
+      .then((res) => {
+        likeNumber.textContent = res.likes.length;
+        evt.target.classList.remove('elements__like_active');
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`)
+      })
+  } else {
+    addLikeOnServer(card.id)
+      .then((res) => {
+        likeNumber.textContent = res.likes.length;
+        evt.target.classList.add('elements__like_active');
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`)
+      })
+  }
 };
-//функция лайка 
-const handleLikeCard = (event) => {
-	event.target.closest('.elements__like').classList.toggle('elements__like_active')
-};
 
-//создание карточек
-const renderCard = (data) => {
-  elements.prepend(createCard(data));
-};
-//инициализация данных массива
-initialCards.forEach((data) => {
-	renderCard(data);
-})
-
-//Собрать введенные значения, отобразить на экране и закрыть попап редактирования профиля
-function editProfile(evt) {
-	profileName.textContent = nameInput.value;
-	profileJob.textContent = jobInput.value;
-
-	closePopup(popupEditProfile);
- };
-
-//Собрать введенные значения, отобразить на экране и закрыть попап добавления картинки
-function addCard(evt) {
-   evt.preventDefault();
-    const newCard = {name: nameCardInput.value, link: urlInput.value}
-    renderCard(newCard);
-    nameCardInput.value = '';
-    urlInput.value = '';
-
-  closePopup(popupNewCard);
+function checkLikeButton(like, likeButton) {
+  if (like === profileName.id) {
+    likeButton.classList.add('elements__like_active')
+  }
 }
 
-export { editProfile, addCard }
+const renderCard = (data) => {
+  elements.prepend(addCard(data))
+}
+
+function disableDeleteButton (item, trashButton) {
+  if (item.owner._id === profileName.id) {
+    trashButton.disabled = false;
+    trashButton.classList.remove('trash-button_disabled');
+  } else {
+    trashButton.disabled = true;
+    trashButton.classList.add('trash-button_disabled');
+  }
+}
+
+
+function editProfile(evt) {
+  renderLoading(true, editButton);
+  updateProfile(nameInput.value, jobInput.value)
+    .then(res => {
+      profileName.textContent = res.name;
+      profileJob.textContent = res.about;
+      closePopup();
+    })
+    .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+      })
+    .finally(() => {
+      renderLoading(false, editButton);
+    })
+  };
+
+
+
+export { editProfile, addCard, renderCard, disableDeleteButton }

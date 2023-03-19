@@ -9,6 +9,7 @@
 	justify-content: space-between;
 	margin-right: auto;
 	margin-left: auto;
+	position:relative;
 }
 @media (max-width: 1041px) {
 	.profile{
@@ -17,6 +18,7 @@
 		grid-template-rows: repeat(3, max-content);
 		justify-content: center;
 		align-items: center;
+		
 	}
 }
 @media (max-width: 360px) {

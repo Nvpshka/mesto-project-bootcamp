@@ -16,6 +16,6 @@
 	.popup__button{
 		width:238px;
 		height: 46px;
-		margin:45px 0 25px 0;
+		margin: 10px auto 25px auto;
 	}
 }

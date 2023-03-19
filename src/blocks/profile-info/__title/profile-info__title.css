@@ -8,6 +8,8 @@
 	display:flex;
 	padding:0;
 }
+
+
 @media (max-width: 360px) {
 	.profile-info__title{
 		font-size: 27px;

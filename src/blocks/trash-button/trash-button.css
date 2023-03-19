@@ -16,3 +16,6 @@
 	opacity: 0.6;
 	cursor:pointer;
 }
+.trash-button_disabled{
+	visibility: hidden;
+}

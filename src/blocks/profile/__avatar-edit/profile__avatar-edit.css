@@ -1,0 +1,26 @@
+.profile__avatar-edit{
+	width:120px;
+	height:120px;
+	background: url(../../../images/edit.png);
+	border:none;
+	background-size: 26px 26px;
+	position: absolute;
+	background-repeat: no-repeat;
+	background-position: center;
+	/*top:0;
+	left:0;*/
+	opacity:0;
+	
+}
+.profile__avatar-edit:hover{
+	background-color: rgba(0,0,0,0.8);
+	cursor:pointer;
+	opacity:100%;
+}
+@media (max-width: 1041px) {
+	.profile__avatar-edit{
+		display:flex;
+		justify-self: center;
+		top:0%;
+			}
+}

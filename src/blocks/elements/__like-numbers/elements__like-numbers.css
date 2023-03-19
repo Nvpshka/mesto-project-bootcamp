@@ -1,0 +1,8 @@
+.elements__like-numbers{
+	margin: 0;
+	display:flex;
+	justify-content: center;
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 16px;
+}

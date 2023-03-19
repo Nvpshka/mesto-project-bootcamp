@@ -1,7 +1,7 @@
 .profile-info__edit-button{
 	width: 24px;
 	height: 24px;
-	margin:15px 0 0 0;
+	margin:22px 0 0 0;
 	background: url(../../../images/pen.png);
 	background-size: 10px 10px;
 	background-repeat: no-repeat;
@@ -13,6 +13,7 @@
 	cursor:pointer;
 	opacity: 60%;
 }
+
 @media (max-width: 360px) {
 	.profile-info__edit-button{
 		width:18px;

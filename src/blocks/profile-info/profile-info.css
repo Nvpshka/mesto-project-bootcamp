@@ -9,9 +9,10 @@
 }
 @media (max-width: 1041px) {
 	.profile-info{
-		justify-self:center;
+		justify-items:center;
 		margin-bottom:0;
-		margin-left: 0;
+		margin-left: auto;
+		margin-right: auto;
 	}
 }
 @media (max-width: 360px) {

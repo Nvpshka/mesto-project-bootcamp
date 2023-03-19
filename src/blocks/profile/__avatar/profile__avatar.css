@@ -7,7 +7,12 @@
 	background-size: auto 120px;*/
 	object-fit: cover;
 	margin:0;
-	gap:0;
+	gap:0; 
+
+}
+.profile__avatar:hover{
+	opacity:20%;
+
 }
 @media (max-width: 1041px) {
 	.profile__avatar{
