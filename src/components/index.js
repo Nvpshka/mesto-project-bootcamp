@@ -1,6 +1,6 @@
 import { popupEditProfile, popupNewCard, editButton, addButton, settings, 
 	updateButton, popupUpdateAvatar, popupDeleteCard, profileName, profileJob, profileAvatar, 
-	nameInput, jobInput } from './const.js';
+	nameInput, jobInput, addCardButton, updateAvatarButton } from './const.js';
 import { editProfile, renderCard } from './cards.js';
 import { openPopup, handleAddCard, handleUpdateAvatar, handleConfirmDeleteCard } from './modal.js';
 import { enableValidation } from './validate.js';
@@ -10,13 +10,20 @@ import './../pages/index.css';
 //открыть попапы
 editButton.addEventListener('click', function() {
 	openPopup(popupEditProfile);
+  nameInput.textContent = profileName.value;
+  jobInput.textContent = profileJob.value;
 });
 
 addButton.addEventListener('click',function() {
-	openPopup(popupNewCard);
+	addCardButton.setAttribute("disabled", "");
+  addCardButton.classList.add('popup__button_inactive');
+  openPopup(popupNewCard);
+
 });
 
 updateButton.addEventListener('click', function() {
+  updateAvatarButton.setAttribute("disabled", "");
+  updateAvatarButton.classList.add('popup__button_inactive');
 	openPopup(popupUpdateAvatar);
 });
 

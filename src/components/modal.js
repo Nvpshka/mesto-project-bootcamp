@@ -1,5 +1,5 @@
 import { popupAll, popupImage, popupCaption, popupFullImage, popupDeleteCard, addCardButton, 
-nameCardInput, urlInput, updateAvatarButton, profileAvatar, urlAvatar, deleteButton } from './const.js';
+nameCardInput, urlInput, updateAvatarButton, profileAvatar, urlAvatar, deleteButton,  } from './const.js';
 import { renderCard } from './cards.js';
 import { updateAvatar, addCardOnServer, deleteCardFromServer } from './api.js';
 function openPopup(popup) {
@@ -12,8 +12,8 @@ function handleOpenImage (event){
 	popupImage.src = event.target.src;
   popupImage.alt = event.target.alt;
 	popupCaption.textContent = card.querySelector('.elements__name').textContent;
-
-	popupFullImage.classList.add("popup_opened");
+openPopup(popupFullImage);
+	//popupFullImage.classList.add("popup_opened");
   document.addEventListener('keydown', handleEscape);
 }
 
@@ -31,7 +31,7 @@ function handleEscape(evt) {
 };
 
 function openPopupDeleteCard(evt) {
-  const element = event.target.closest('.elements__card');
+  const element = evt.target.closest('.elements__card');
   openPopup(popupDeleteCard);
   popupDeleteCard.id = element.id;
 }
@@ -67,6 +67,8 @@ function handleAddCard(evt) {
       renderCard(res)
       nameCardInput.value = '';
       urlInput.value ='';
+      addCardButton.setAttribute("disabled", "");
+      addCardButton.classList.add('popup__button_inactive');
       //event.target.reset();
       closePopup();
     })

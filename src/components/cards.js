@@ -73,7 +73,7 @@ function disableDeleteButton (item, trashButton) {
     trashButton.classList.add('trash-button_disabled');
   }
 }
-
+ 
 
 function editProfile(evt) {
   renderLoading(true, editButton);
