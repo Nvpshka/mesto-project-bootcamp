@@ -13,8 +13,6 @@ function handleOpenImage (event){
   popupImage.alt = event.target.alt;
 	popupCaption.textContent = card.querySelector('.elements__name').textContent;
 openPopup(popupFullImage);
-	//popupFullImage.classList.add("popup_opened");
-  document.addEventListener('keydown', handleEscape);
 }
 
 function closePopup() {
@@ -71,6 +69,12 @@ function handleAddCard(evt) {
       addCardButton.classList.add('popup__button_inactive');
       //event.target.reset();
       closePopup();
+    })
+    .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+      })
+    .finally(() => {
+      renderLoading(false, addCardButton);
     })
 }
 

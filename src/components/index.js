@@ -10,8 +10,8 @@ import './../pages/index.css';
 //открыть попапы
 editButton.addEventListener('click', function() {
 	openPopup(popupEditProfile);
-  nameInput.textContent = profileName.value;
-  jobInput.textContent = profileJob.value;
+  profileName.value = nameInput.textContent;
+  profileJob.value = jobInput.textContent;
 });
 
 addButton.addEventListener('click',function() {
